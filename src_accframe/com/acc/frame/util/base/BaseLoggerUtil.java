@@ -8,13 +8,13 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.acc.frame.manager.JsonManager;
+import com.acc.frame.manager.base.BaseJsonManager;
 import com.acc.frame.util.constant.AppLibConstant;
 import com.acc.frame.util.constant.HttpConstant;
 import com.acc.frame.util.constant.LogConstant;
 
 public class BaseLoggerUtil {
-	protected static JsonManager jsonManager;
+	protected static BaseJsonManager baseJsonManager;
 
 	// private static String getStringFromObject(JsonManager jsonManager,
 	// Object object) {
@@ -37,7 +37,7 @@ public class BaseLoggerUtil {
 			resultString = (String) object;
 		} else {
 			try {
-				resultString = jsonManager.getJson(object);
+				resultString = baseJsonManager.getJson(object);
 			} catch (Exception e) {
 				resultString = "该类不符合规范，尝试传字符串类型";
 			}
@@ -52,12 +52,11 @@ public class BaseLoggerUtil {
 				+ Thread.currentThread().getStackTrace()[4].getMethodName();
 	}
 
-	protected static String getLogString(Object informationObject) {
+	public static String getLogString(Object informationObject) {
 		return getStringFromObject(informationObject) + getLogFromString();
 	}
 
-	protected static String getLogString(Object tagObject,
-			Object informationObject) {
+	public static String getLogString(Object tagObject, Object informationObject) {
 		String informationString = getStringFromObject(informationObject);
 		if (tagObject instanceof String) {
 			return tagObject + LogConstant.DIVIDER + informationString
@@ -71,7 +70,7 @@ public class BaseLoggerUtil {
 		// return getStringFromObject(informationObject);
 	}
 
-	protected static String getLogString(Object tagObject,
+	public static String getLogString(Object tagObject,
 			String informationPrefixString, Object informationObject) {
 		String informationString = getStringFromObject(informationObject);
 		if (tagObject instanceof String) {

@@ -1,4 +1,4 @@
-package com.acc.frame.manager;
+package com.acc.frame.manager.base;
 
 import java.lang.reflect.Type;
 
@@ -6,10 +6,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 
-public class JsonManager {
+public abstract class BaseJsonManager {
 	private final Gson gson;
 
-	public JsonManager() {
+	public BaseJsonManager() {
 		this.gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss")
 				.create();
 	}
