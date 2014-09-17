@@ -1,4 +1,4 @@
-package com.acc.frame.manager.base;
+package com.acc.frame.util.base;
 
 import java.io.DataOutputStream;
 import java.io.File;
@@ -8,16 +8,17 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.acc.frame.manager.base.BaseJsonManager;
 import com.acc.frame.util.constant.AppLibConstant;
 import com.acc.frame.util.constant.HttpConstant;
 import com.acc.frame.util.constant.LogConstant;
 
-public abstract class BaseLogManager {
-	protected BaseJsonManager baseJsonManager;
-
-	public BaseLogManager(BaseJsonManager baseJsonManager) {
-		this.baseJsonManager = baseJsonManager;
-	}
+public abstract class BaseLogUtil {
+	// protected BaseJsonManager baseJsonManager;
+	//
+	// public BaseLogManager(BaseJsonManager baseJsonManager) {
+	// this.baseJsonManager = baseJsonManager;
+	// }
 
 	// private static String getStringFromObject(JsonManager jsonManager,
 	// Object object) {
@@ -34,11 +35,12 @@ public abstract class BaseLogManager {
 	// return resultString;
 	// }
 
-	public abstract boolean isUseLog();
+	// public abstract boolean isUseLog();
 
 	// public abstract void initBaseJsonManager();
 
-	private String getStringFromObject(Object object) {
+	private static String getStringFromObject(Object object,
+			BaseJsonManager baseJsonManager) {
 		String resultString;
 		if (object instanceof String) {
 			resultString = (String) object;
@@ -52,25 +54,29 @@ public abstract class BaseLogManager {
 		return resultString;
 	}
 
-	private String getLogFromString() {
+	private static String getLogFromString() {
 		return LogConstant.FROM
 				+ Thread.currentThread().getStackTrace()[4].getClassName()
 				+ HttpConstant.URLDOT
 				+ Thread.currentThread().getStackTrace()[4].getMethodName();
 	}
 
-	public String getLogString(Object informationObject) {
-		if (!this.isUseLog()) {
-			return null;
-		}
-		return getStringFromObject(informationObject) + getLogFromString();
+	protected static String getLogString(Object informationObject,
+			BaseJsonManager baseJsonManager) {
+		// if (!this.isUseLog()) {
+		// return null;
+		// }
+		return getStringFromObject(informationObject, baseJsonManager)
+				+ getLogFromString();
 	}
 
-	public String getLogString(Object tagObject, Object informationObject) {
-		if (!this.isUseLog()) {
-			return null;
-		}
-		String informationString = getStringFromObject(informationObject);
+	protected static String getLogString(Object tagObject,
+			Object informationObject, BaseJsonManager baseJsonManager) {
+		// if (!this.isUseLog()) {
+		// return null;
+		// }
+		String informationString = getStringFromObject(informationObject,
+				baseJsonManager);
 		if (tagObject instanceof String) {
 			return tagObject + LogConstant.DIVIDER + informationString
 					+ getLogFromString();
@@ -83,12 +89,14 @@ public abstract class BaseLogManager {
 		// return getStringFromObject(informationObject);
 	}
 
-	public String getLogString(Object tagObject,
-			String informationPrefixString, Object informationObject) {
-		if (!this.isUseLog()) {
-			return null;
-		}
-		String informationString = getStringFromObject(informationObject);
+	protected static String getLogString(Object tagObject,
+			String informationPrefixString, Object informationObject,
+			BaseJsonManager baseJsonManager) {
+		// if (!this.isUseLog()) {
+		// return null;
+		// }
+		String informationString = getStringFromObject(informationObject,
+				baseJsonManager);
 		if (tagObject instanceof String) {
 			return tagObject + LogConstant.DIVIDER + informationPrefixString
 					+ LogConstant.PRIFIX + informationString
@@ -103,17 +111,19 @@ public abstract class BaseLogManager {
 		// return getStringFromObject(informationObject);
 	}
 
-	public void systemOut(Object informationObject) {
-		if (!this.isUseLog()) {
-			return;
-		}
-		systemOut(getLogString(informationObject));
+	protected static void systemOut(Object informationObject,
+			BaseJsonManager baseJsonManager) {
+		// if (!this.isUseLog()) {
+		// return;
+		// }
+		systemOut(getLogString(informationObject, baseJsonManager));
 	}
 
-	public void systemOut(Object tagObject, Object informationObject) {
-		if (!this.isUseLog()) {
-			return;
-		}
+	protected void systemOut(Object tagObject, Object informationObject,
+			BaseJsonManager baseJsonManager) {
+		// if (!this.isUseLog()) {
+		// return;
+		// }
 		// if (!HttpConstant.LOG) {
 		// return;
 		// }
@@ -126,16 +136,17 @@ public abstract class BaseLogManager {
 		// + informationString);
 		// Log.d("" + tagObject.getClass(), informationString);
 		// }
-		systemOut(getLogString(tagObject, informationObject));
+		systemOut(getLogString(tagObject, informationObject, baseJsonManager));
 	}
 
-	public void systemOut(Object tagObject, String informationPrefixString,
-			Object informationObject) {
-		if (!this.isUseLog()) {
-			return;
-		}
+	protected static void systemOut(Object tagObject,
+			String informationPrefixString, Object informationObject,
+			BaseJsonManager baseJsonManager) {
+		// if (!this.isUseLog()) {
+		// return;
+		// }
 		systemOut(getLogString(tagObject, informationPrefixString,
-				informationObject));
+				informationObject, baseJsonManager));
 	}
 
 	private static void systemOut(String stringInfo) {
@@ -175,27 +186,29 @@ public abstract class BaseLogManager {
 	// }
 	// }
 
-	public void fileOut(Object informationObject) {
-		if (!this.isUseLog()) {
-			return;
-		}
-		fileOut(getLogString(informationObject));
+	protected static void fileOut(Object informationObject,
+			BaseJsonManager baseJsonManager) {
+		// if (!this.isUseLog()) {
+		// return;
+		// }
+		fileOut(getLogString(informationObject, baseJsonManager));
 	}
 
-	public void fileOut(Object tagObject, Object informationObject) {
-		if (!this.isUseLog()) {
-			return;
-		}
-		fileOut(getLogString(tagObject, informationObject));
+	protected static void fileOut(Object tagObject, Object informationObject,
+			BaseJsonManager baseJsonManager) {
+		// if (!this.isUseLog()) {
+		// return;
+		// }
+		fileOut(getLogString(tagObject, informationObject, baseJsonManager));
 	}
 
 	public void fileOut(Object tagObject, String informationPrefixString,
-			Object informationObject) {
-		if (!this.isUseLog()) {
-			return;
-		}
+			Object informationObject, BaseJsonManager baseJsonManager) {
+		// if (!this.isUseLog()) {
+		// return;
+		// }
 		fileOut(getLogString(tagObject, informationPrefixString,
-				informationObject));
+				informationObject, baseJsonManager));
 		// String informationString = getStringFromObject(informationObject);
 		// if (tagObject instanceof String) {
 		// fileOut(((String) tagObject) + "--" + informationPrefixString + ":"
@@ -208,7 +221,7 @@ public abstract class BaseLogManager {
 		// }
 	}
 
-	private void fileOut(String informationString) {
+	private static void fileOut(String informationString) {
 		// String informationString = getStringFromObject(informationObject);
 		File file = new File(AppLibConstant.getLogFilePath());
 		if (file.exists() == false) {
