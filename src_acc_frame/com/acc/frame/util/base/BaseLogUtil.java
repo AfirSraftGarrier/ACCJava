@@ -119,7 +119,7 @@ public abstract class BaseLogUtil {
 		systemOut(getLogString(informationObject, baseJsonManager));
 	}
 
-	protected void systemOut(Object tagObject, Object informationObject,
+	protected static void systemOut(Object tagObject, Object informationObject,
 			BaseJsonManager baseJsonManager) {
 		// if (!this.isUseLog()) {
 		// return;
