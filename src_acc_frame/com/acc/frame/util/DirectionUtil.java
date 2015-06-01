@@ -19,24 +19,35 @@
  */
 package com.acc.frame.util;
 
-public class MD5Util {
-	public static String getMD5(String sourceString) {
-		try {
-			java.security.MessageDigest messageDigest = java.security.MessageDigest
-					.getInstance("MD5");
-			byte[] byts = messageDigest.digest(sourceString.getBytes());
-			String result = "";
-			for (int i = 0; i < byts.length; i++) {
-				String temp = Integer.toHexString(byts[i] & 0XFf);
-				if (temp.length() == 1) {
-					result += "0" + temp;
-				} else {
-					result += temp;
-				}
+import com.acc.frame.model.Direction;
+
+public class DirectionUtil {
+	public static Direction getDirection(float fromX, float fromY, float toX,
+			float toY) {
+		if (fromX > toX) {
+			if (fromY > toY) {
+				return Direction.LEFTUP;
+			} else if (fromY == toY) {
+				return Direction.LEFT;
+			} else {
+				return Direction.DOWNLEFT;
 			}
-			return result;
-		} catch (Exception e) {
-			return "";
+		} else if (fromX == toX) {
+			if (fromY > toY) {
+				return Direction.UP;
+			} else if (fromY == toY) {
+				return Direction.STOP;
+			} else {
+				return Direction.DOWN;
+			}
+		} else {
+			if (fromY > toY) {
+				return Direction.UPRIGHT;
+			} else if (fromY == toY) {
+				return Direction.RIGHT;
+			} else {
+				return Direction.RIGHTDOWN;
+			}
 		}
 	}
 }

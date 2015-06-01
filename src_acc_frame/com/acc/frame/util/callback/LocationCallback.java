@@ -17,26 +17,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * 
  */
-package com.acc.frame.util;
+package com.acc.frame.util.callback;
 
-public class MD5Util {
-	public static String getMD5(String sourceString) {
-		try {
-			java.security.MessageDigest messageDigest = java.security.MessageDigest
-					.getInstance("MD5");
-			byte[] byts = messageDigest.digest(sourceString.getBytes());
-			String result = "";
-			for (int i = 0; i < byts.length; i++) {
-				String temp = Integer.toHexString(byts[i] & 0XFf);
-				if (temp.length() == 1) {
-					result += "0" + temp;
-				} else {
-					result += temp;
-				}
-			}
-			return result;
-		} catch (Exception e) {
-			return "";
-		}
-	}
+import com.acc.frame.model.GeoData;
+import com.acc.frame.model.GeoDataWithoutAddress;
+
+public interface LocationCallback {
+	void receive(GeoDataWithoutAddress geoPoint);
+
+	void receive(GeoData geoData);
+
+	void receive(String address);
 }
