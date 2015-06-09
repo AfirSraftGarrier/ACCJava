@@ -1,6 +1,6 @@
 /**
  * 
- * ACCFrame - ACC Java Development Platform
+ * ACCJava - ACC Java Development Platform
  * Copyright (c) 2014, AfirSraftGarrier, afirsraftgarrier@qq.com
  * 
  * This program is free software: you can redistribute it and/or modify
