@@ -79,5 +79,6 @@
 		<junit.version>4.11</junit.version>
 		<pinyin4j.version>2.5.0</pinyin4j.version>
 		<gson.version>2.3.1</gson.version>
+		<maven-surefire-plugin.version>2.14</maven-surefire-plugin.version>
 	</properties>
 </project>
