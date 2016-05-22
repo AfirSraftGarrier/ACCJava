@@ -1,3 +1,5 @@
+[![1.X Build Status](http://www.kuwoku.com)](http://www.kuwoku.com) [![Gitter](https://badges.gitter.im/NLPchina/ansj_seg.svg)](http://www.kuwoku.com)
+
 ###ACC Java develop platform
 
 ####ACC Java develop platform is a platform which focus on java development.It can be use as in jave web project and android project.
