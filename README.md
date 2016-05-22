@@ -1,4 +1,4 @@
-[![1.X Build Status](http://www.kuwoku.com)](http://www.kuwoku.com) [![Gitter](https://badges.gitter.im/NLPchina/ansj_seg.svg)](http://www.kuwoku.com)
+[![1.X Build Status](https://travis-ci.org/NLPchina/ansj_seg.svg?branch=master)](http://www.kuwoku.com) [![酷我酷](https://badges.gitter.im/NLPchina/ansj_seg.svg)](http://www.kuwoku.com)
 
 ###ACC Java develop platform
 
