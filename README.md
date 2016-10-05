@@ -1,11 +1,11 @@
 [![1.X Build Status](https://travis-ci.org/NLPchina/ansj_seg.svg?branch=master)](http://www.kuwoku.com) [![酷我酷](https://badges.gitter.im/NLPchina/ansj_seg.svg)](http://www.kuwoku.com)
 
-###ACC Java develop platform
+###ACCJava is a java develop platform to elegantly speed up java development.
 
-####ACC Java develop platform is a platform which focus on java development.It can be use as in jave web project and android project.
+* It can be use as lib in java web project and android project.
 
-###Because it is the first time commit, for any question please write to my email: afirsraftgarrier@qq.com.
+###For any question please write to my email: afirsraftgarrier@qq.com.
 
-   [My Home page](http://lianquna.com)
+This is my [home page](http://www.befuncool.com).
 
-   [My Tech Home page](http://blog.csdn.net/afirsraftgarrier)
+This is my [tech home page](https://github.com/AfirSraftGarrier).
